@@ -16,7 +16,7 @@ A minimalist task management app with Steam-inspired dark theme, built with .NET
 - Task prioritization
 
 ## Tech Stack 💻
-- **Frontend**: Blazor WebAssembly
+- **Frontend**: .NET MAUI Blazor Hybrid
 - **Styling**: Custom CSS (minimal Bootstrap)
 - **State Management**: In-memory (via `TaskService.cs`)
 - **Icons**: System icons *(FontAwesome planned)*
