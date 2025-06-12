@@ -1,6 +1,6 @@
 # Daily Task Tracker 🚀
 
-A minimalist task management app with Steam-inspired dark theme, built with Blazor WebAssembly.
+A minimalist task management app with Steam-inspired dark theme, built with .NET MAUI Blazor Hybrid.
 
 ## Features ✨
 - **Add tasks** with title, description, and category
