@@ -1,0 +1,63 @@
+﻿@page "/"
+@using SimpleTaskTrackerApp.Classes 
+@inject SimpleTaskTrackerApp.Services.TaskService TS
+
+<div class="main-container">
+
+<h1 class="menu-title">@menuTitle</h1>
+
+@if (isLoading)
+{
+    <p>Loading tasks...</p>
+}
+else
+{
+    if (!isAddingTask) 
+    {
+        <div class="task-list">
+        <button class="add-task-button" @onclick="() => StartTaskAddingProcess()">Add New Task</button>
+        @foreach (var task in tasks)
+        {
+            <div class="task-item">
+                <button class="task-complete-btn" @onclick="() => DeleteTask(task)">-</button>
+                <div class="task-title-header">
+                    <h3>@(task.Title)</h3>
+                    @if (!string.IsNullOrEmpty(task.Category))
+                    {
+                        <h5 class="task-category">@task.Category</h5>
+                    }
+                </div>
+                <p>@task.Description</p>
+            </div>
+        }
+        </div>
+    }
+    else
+    {
+        <div class="add-task">
+            <input @bind="newTaskTitle" placeholder="Task title" />
+            @if (errorWhileAddingTask)
+            {
+                <p class="no-task-title-error">Must Include Title</p>
+            }
+            <input @bind="newTaskDescription" placeholder="Description" />
+            <select @bind="newTaskCategory" title="Choose a Category" name="categories"> 
+                <option value="" disabled selected hidden>Choose a Category</option>
+                @foreach (string category in categories)
+                {
+                    <option value=@category>@category</option>
+                }
+            </select>
+            <button class="btn btn-primary" @onclick="() => AddNewTask(newTaskTitle, newTaskDescription, newTaskCategory)">Add Task</button>
+            <button class="btn btn-outline-danger" @onclick="() => CancelTaskAddingProcess()">Cancel</button>
+        </div>
+    }
+
+    
+}
+
+</div>
+
+@code {
+    
+}
